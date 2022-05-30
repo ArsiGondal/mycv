@@ -6,6 +6,8 @@ const dbConfig = {
   },
 };
 
+console.log(process.env.NODE_ENV);
+
 switch (process.env.NODE_ENV) {
   case 'development':
     Object.assign(dbConfig, {
@@ -32,6 +34,7 @@ switch (process.env.NODE_ENV) {
         rejectUnauthorized: false,
       },
     });
+    break;
   default:
     throw new Error('Unknown Environment');
 }
