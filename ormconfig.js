@@ -6,8 +6,6 @@ const dbConfig = {
   },
 };
 
-console.log(process.env.NODE_ENV);
-
 switch (process.env.NODE_ENV) {
   case 'development':
     Object.assign(dbConfig, {
@@ -29,12 +27,11 @@ switch (process.env.NODE_ENV) {
       type: 'postgres',
       url: process.env.DATABASE_URL,
       migrationsRun: true,
-      entities: ['dist/**/*.entity.ts'],
+      entities: ['**/*.entity.ts'],
       ssl: {
         rejectUnauthorized: false,
       },
     });
-    break;
   default:
     throw new Error('Unknown Environment');
 }
