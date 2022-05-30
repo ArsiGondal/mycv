@@ -1,20 +1,23 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
-const cookieSession = require('cookie-session');
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.use(
-    cookieSession({
-      keys: ['mysecretjavascriptkey'],
-    }),
-  );
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-    }),
-  );
+
+  const config = new DocumentBuilder()
+
+    .setTitle('MYCV')
+    .setDescription('MYCV APIs')
+    .setVersion('1.0')
+    .addTag('MYCV APIs')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('swagger', app, document);
+
   await app.listen(3000);
+
+  console.warn(`API is running on port 3000`);
 }
 bootstrap();
