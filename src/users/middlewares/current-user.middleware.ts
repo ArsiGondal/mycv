@@ -1,6 +1,5 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { NextFunction } from 'express';
-import { User } from '../user.entity';
 import { UsersService } from '../users.service';
 
 @Injectable()

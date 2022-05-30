@@ -1,3 +1,4 @@
 npm i @nestjs/typeorm typeorm sqlite3 = command to install typeorm
 $ npm install --save @nestjs/swagger swagger-ui-express
 flow of request = request => middlewares(e.g cookie-session) => Guards => Interceptor => Request handler(controller) => response
+DB_NAME , COOKIE_KEY
