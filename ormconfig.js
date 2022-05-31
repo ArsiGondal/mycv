@@ -23,6 +23,7 @@ switch (process.env.NODE_ENV) {
     });
     break;
   case 'production':
+    console.log('In Production');
     Object.assign(dbConfig, {
       type: 'postgres',
       url: process.env.DATABASE_URL,
